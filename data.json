@@ -1,10 +1,12 @@
 {
     "Gudu": {
-        "website": "gudu123.com",
-        "Password": "Gudu@123"
-    },
-    "Amit": {
-        "website": "Amit123.com",
-        "Password": "Hello@123"
+        "gmail": {
+            "username": "Somanathsara@gmail.com",
+            "password": "Som@n@ths@r@123"
+        },
+        "github": {
+            "username": "somanathsara",
+            "password": "somanathsara123"
+        }
     }
 }
