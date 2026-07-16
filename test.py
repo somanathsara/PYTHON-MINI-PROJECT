@@ -1,16 +1,15 @@
-import json
-with open("data.json", "r")as file:
-    data = json.load(file)
-username = input("ENter user name: ")
-password = input("Enter pasword: ")
-
-if username in data:
-    if password == data[username]["Password"]:
-        print("Login succesfull")
-    else:
-        print("Wrong password")
+import bcrypt
+from getpass import getpass
+password = getpass("Enter your password here: ", echo_char="*")
+print(password)
+password_bytes = password.encode('utf - 8')
+hashed_password = bcrypt.hashpw(
+    password_bytes, bcrypt.gensalt()
+)
+hashed = hashed_password.decode('utf - 8')
+print(hashed_password.decode('utf - 8'))
+newpass = input("Enter new password here: ")
+if bcrypt.checkpw(newpass.encode(), hashed.encode()):
+    print("Welcome")
 else:
-    print("User not found")
-
-with open("data.json", "w") as file:
-    json.dump(data, file, indent = 4)
+    print("Wrong password")

@@ -8,5 +8,29 @@
             "username": "somanathsara",
             "password": "somanathsara123"
         }
+    },
+    "Nirmal kumar das": {
+        "Gmail": {
+            "username": "Nirmaldas@gmail.com",
+            "password": "Nirm@l12345678"
+        },
+        "Github": {
+            "username": "nirmalkumardas",
+            "password": "Nirm@l123409876"
+        },
+        "Instagram": {
+            "username": "Uniqueboy___Nirmal___",
+            "password": "Nirmal@#$%&12345"
+        }
+    },
+    "Balaram parida": {
+        "github": {
+            "username": "balaramparida",
+            "password": "Balaramparida"
+        },
+        "Gmail": {
+            "username": "balaramparida@gmail.com",
+            "password": "Balaramp@rid@123"
+        }
     }
 }

@@ -1,5 +1,7 @@
 import random
-import getpass,sys
+import sys
+import bcrypt,pyperclip
+from getpass import getpass
 import json
 import string
 def load_user():
@@ -13,9 +15,9 @@ def load_data():
         return data
     except (FileNotFoundError, json.JSONDecodeError):
         return {}
-def save_user(user, mpass):
+def save_user(user, hashed):
     data = load_user()
-    data[user]={"Masterpassword" : mpass}
+    data[user]={"Masterpassword" : hashed}
     with open("users.json", "w")as file:
         json.dump(data, file, indent = 4)
 def register():
@@ -24,15 +26,21 @@ def register():
     if user in data:
         print("User already exist")
     else:
-        mpassword = input("Enter your master password: ")
-        save_user(user, mpassword)
+        mpassword = getpass("Enter your master password: ", echo_char="*")
+        hashed = bcrypt.hashpw(mpassword.encode(),bcrypt.gensalt()).decode()
+        save_user(user, hashed)
 def login():
     global current_user
     name = input("Please enter your name here: ")
-    password = input("Please enter your password here: ")
+    password = getpass("Please enter your password here: ",echo_char="*")
     data = load_user()
-    if name in data:
-        if data[name]["Masterpassword"] == password:
+    if name not in data:
+        print("-"*25)
+        print("User not found")
+        print("-"*25)
+        return
+    stored_hash = data[name]["Masterpassword"] 
+    if bcrypt.checkpw(password.encode(),stored_hash.encode()):
             print("-"*30)
             print("Access granted ")
             print("-"*30)
@@ -59,17 +67,21 @@ def login():
                     change_master_password(current_user)
                 elif choice == '8':
                     break    
-        else:
-            print("Access denied! You entered wrong password")
+                else:
+                    print("-"*25)
+                    print("Please input valid choice!")
+                    print("-"*25)
     else:
-        print("-"*30)
-        print("User doesn't exist")
-        print("-"*30)
+            print("-"*35)
+            print("Access denied! You entered wrong password")
+            print("-"*35)
+            return
+
 def save_password():
     global current_user
     website = input("Enter the name of your website: ")
     user = input(f"Enter the user name for {website}: ")
-    password = input("Enter the password for the website: ")
+    password = getpass("Enter the password for the website: ",echo_char="*")
     data = load_data()
     if current_user not in data:
         data[current_user]= {}
@@ -114,7 +126,7 @@ def search_password(current_user):
 def update_password(current_user):
     data = load_data()
     website = input("Enter your website name which password wants to change: ")
-    newpassword = input("Please enter your new password:")
+    newpassword = getpass("Please enter your new password:",echo_char="*")
     newuser = input("Do you want to change user name(y/n)")
     if current_user not in data:
         print("-"*30)
@@ -158,7 +170,7 @@ def generate_password(current_user):
     data = load_data()
     if current_user not in data:
         print("User not found") 
-    length = int(input("Please enter the length of the password: "))
+    length = int(input("Please enter the length of the password(must be greater than 12): "))
     characters = string.ascii_letters + string.digits + string.punctuation
     password = ""
     for i in range(length):
@@ -185,7 +197,7 @@ def change_master_password(current_user):
         print("-"*30)
         print("User not found")
         print("-"*30)
-    mpass = input("Enter new master password: ")
+    mpass = getpass("Enter new master password: ",echo_char="*")
     choice = input("Do you want to change your master password(y/n): ")
     if choice.lower() == 'y':
         data[current_user] = {"Massterpassword":mpass}

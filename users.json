@@ -1,11 +1,14 @@
 {
+    "Balaram parida": {
+        "Masterpassword": "$2b$12$H2KL9xNLIP3VRUYBR83sD.L4dRTbjCfBBLbsRxn650VCL5Ld5xGai"
+    },
+    "Dibya ranjan behera": {
+        "Masterpassword": "$2b$12$LfTitpr0aWsT0GasflDGJuicYBG5mcsqwJN.wSr6YlmkeTbQv83Qa"
+    },
     "Gudu": {
-        "Massterpassword": "Somanath@143"
+        "Masterpassword": "$2b$12$mIGSpPPF0jdKFetWx46/F.NqNJMvLEjEOl09xYPtHscFIH2YVjYka"
     },
-    "ram": {
-        "Masterpassword": "Ram@123"
-    },
-    "Hari": {
-        "Masterpassword": "Hari@123"
+    "Nirmal kumar das": {
+        "Masterpassword": "$2b$12$ySKSaBGGlUhw0k8ZR1BPBeDVA8Q8RSqDETcitXsKvJtjacOTNcgga"
     }
 }
