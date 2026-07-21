@@ -1,9 +1,7 @@
 import random
-import sys
-import bcrypt,pyperclip
+import bcrypt,pyperclip,sys
 from getpass import getpass
-import json
-import string
+import json,string
 def load_user():
     with open("users.json", "r")as file:
         data = json.load(file)
@@ -76,7 +74,6 @@ def login():
             print("Access denied! You entered wrong password")
             print("-"*35)
             return
-
 def save_password():
     global current_user
     website = input("Enter the name of your website: ")
