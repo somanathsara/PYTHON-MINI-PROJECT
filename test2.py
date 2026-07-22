@@ -5,6 +5,9 @@
 # import os
 # print(os.listdir())
 # FileNotFoundError
-a = "jaisri ram"
-j = a[3:]
-print(j,type(j))
+# a = "jaisri ram"
+# j = a[3:]
+# print(j,type(j))
+a = "hello ram gudu"
+part = a.split()
+print(part)

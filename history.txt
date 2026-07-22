@@ -1,0 +1,11 @@
+pwd
+ls
+cls
+history
+exit
+pwd
+pwd
+ls
+history
+cls
+exit

@@ -1,4 +1,4 @@
-import sys,os
+import sys,os,shutil
 print("MiniShell V1.O")
 print("Type 'help' for commands: ")
 cmdlist = []
@@ -35,9 +35,60 @@ def  cat(command):
         print("Access denied to this file")
     except UnicodeDecodeError:
         print("Can not display this file, It is not a text file.")
+def echo(command):
+    try: 
+        if ">>" in command:
+            left, right = command.split(">>")
+            data = left[5: ]
+            file = right.strip()
+            with open(file, "a")as file:
+                file.write(data +"\n")
+        elif ">" in command:
+            left, right = command.split(">")
+            data = left[5: ].strip()
+            filename = right.strip()
+            with open(filename, "w")as file:
+                file.write(data)
+        else:
+            data = command[5: ]
+            print(f"{data}")
+    except FileExistsError:
+        print("File Already exist.")
+def move(command):
+    try: 
+        part = command.split()
+        source = part[1]
+        destination = part[2]
+        os.rename(source, destination)
+    except FileNotFoundError:
+        print("File not found.")
+    except PermissionError:
+        print("Access denied to move the file!")
+    except FileExistsError:
+        print("File already exist in the directory.")
+    except OSError:
+        print("Invalid destination path.")
+def copy(command):
+    try:
+        part = command.split()
+        source = part[1]
+        destination = part[2]
+        shutil.copy(source, destination)
+    except FileNotFoundError:
+        print("File not found.")
+    except PermissionError:
+        print("Access denied to copy this file.")
+    except IsADirectoryError:
+        print("Choosen item is a directory. ")
+    except shutil.SameFileError:
+        print("Source & destination are the same file.")
+    except OSError:
+        print("Invalid path.")
 while True:
     command = input(f"{os.getcwd()}\\MiniShell:>")
     cmdlist.append(command)
+    with open("history.txt","a")as file:
+        file.write(command + "\n")
     if command == 'exit':
         sys.exit()
     elif(command == 'cls' or command == 'clear'):
@@ -81,6 +132,12 @@ while True:
         Remove(command)
     elif command.startswith("cat "):
         cat(command)
+    elif command.startswith("echo "):
+        echo(command)
+    elif command.startswith("mv "):
+        move(command)
+    elif command.startswith("cp "):
+        copy(command)
         
     else:
         print("Unknown command! ")
