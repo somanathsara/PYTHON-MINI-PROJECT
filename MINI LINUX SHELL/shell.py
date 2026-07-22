@@ -1,4 +1,7 @@
 import sys,os,shutil
+SHELL_DIR = os.path.dirname(os.path.abspath(__file__))
+history_path = os.path.join(SHELL_DIR, "history.txt")
+help_path = os.path.join(SHELL_DIR, "help.txt")
 print("MiniShell V1.O")
 print("Type 'help' for commands: ")
 cmdlist = []
@@ -84,12 +87,24 @@ def copy(command):
         print("Source & destination are the same file.")
     except OSError:
         print("Invalid path.")
+def change_directory(command):
+    try:
+        if command == '~':
+            home = os.path.expanduser("~")
+            os.chdir(home)
+            return
+        os.chdir(command)
+    except FileNotFoundError:
+            print("No Directory avalaible")
+    except NotADirectoryError:
+            print("Path is a file, not a directory.")
 while True:
     command = input(f"{os.getcwd()}\\MiniShell:>")
     cmdlist.append(command)
-    with open("history.txt","a")as file:
+    with open(history_path,"a")as file:
         file.write(command + "\n")
     if command == 'exit':
+        print("Exiting from Minishell.")
         sys.exit()
     elif(command == 'cls' or command == 'clear'):
         os.system("cls")
@@ -102,15 +117,13 @@ while True:
         folders = os.listdir()
         for i in folders:
             print(i)
-    elif command.startswith("cd "):
-        folder = command[3: ]
-        try:
-            os.chdir(folder)
-            print(os.getcwd())
-        except FileNotFoundError:
-            print("No Directory avalaible")
-        except NotADirectoryError:
-            print("Path is a file, not a directory.")
+    elif command.startswith("cd"):
+        part = command.split(maxsplit = 1)
+        if len(part)>1:
+            change_directory(part[1])
+        else:
+            home = os.path.expanduser("~")
+            os.chdir(home)
     elif command.startswith("mkdir "):
         folder = command[6: ]
         if os.path.exists(folder):
@@ -138,6 +151,10 @@ while True:
         move(command)
     elif command.startswith("cp "):
         copy(command)
+    elif command.lower() == 'help':
+        with open(help_path, "r")as file:
+            data = file.read()
+        print(data)
         
     else:
         print("Unknown command! ")

@@ -1,0 +1,45 @@
+pwd
+ls
+cls
+history
+exit
+pwd
+pwd
+ls
+history
+cls
+exit
+pwd
+help
+help
+help
+cd "MINI LINUX SHELL"
+CD "MINI LINUX SHELL"
+cd "MINI LINUS SHELL"
+cd "MINI LINUX SHELL"
+cd MINI LINUX SHELL
+cd ~
+cd
+cd
+cls
+exit
+cd MINI LINUX SHELL
+D:
+cls
+python -u "g:\My Drive\PYTHON SECURITY PROGRAMME\test2.py"
+ cd MINI LINUX SHELL
+cd MINI LINUX SHELL
+cd .
+cd
+cd 
+cd "MINI LINUX SHELL
+cd MINI LINUX SHELL
+cd MINI LINUX SHELL
+cd MINI LINUX SHELL
+cd MINI LINUX SHELL
+cd .
+cd ..
+CD
+cd
+cd ..
+cd programme
