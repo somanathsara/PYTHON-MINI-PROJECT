@@ -43,3 +43,15 @@ CD
 cd
 cd ..
 cd programme
+hello
+pwd
+ls
+tree
+tree
+tree
+tree
+tree
+tree
+tree
+exit
+hello

@@ -87,6 +87,23 @@ def copy(command):
         print("Source & destination are the same file.")
     except OSError:
         print("Invalid path.")
+def tree(path,prefix = ""):
+    data = os.listdir()
+    for index,i in enumerate(data,start = 0):
+        full_path =  os.path.join(path,i)
+        if len(data) - 1 == index:
+            new_prefix = prefix + "        "
+        else:
+            new_prefix = prefix + "|       "
+        if len(data) - 1 == index:
+            connector = "|_____"
+        else:
+            connector = "|-----"
+        print(prefix + connector + i)
+        if i.startswith("."):
+            continue
+        if os.path.isdir(full_path):
+            tree(full_path,new_prefix)
 def change_directory(command):
     try:
         if command == '~':
@@ -99,62 +116,68 @@ def change_directory(command):
     except NotADirectoryError:
             print("Path is a file, not a directory.")
 while True:
-    command = input(f"{os.getcwd()}\\MiniShell:>")
-    cmdlist.append(command)
-    with open(history_path,"a")as file:
-        file.write(command + "\n")
-    if command == 'exit':
-        print("Exiting from Minishell.")
-        sys.exit()
-    elif(command == 'cls' or command == 'clear'):
-        os.system("cls")
-    elif command.lower() == 'history':
-        for i,cmd in enumerate(cmdlist, start = 1):
-            print(f"{i}.{cmd}")
-    elif command == 'pwd':
-        print(os.getcwd())
-    elif command == 'ls':
-        folders = os.listdir()
-        for i in folders:
-            print(i)
-    elif command.startswith("cd"):
-        part = command.split(maxsplit = 1)
-        if len(part)>1:
-            change_directory(part[1])
+    try: 
+        command = input(f"{os.getcwd()}\\MiniShell:>")
+        cmdlist.append(command)
+        with open(history_path,"a")as file:
+            file.write(command + "\n")
+        if command == 'exit':
+            print("Exiting from Minishell.")
+            sys.exit()
+        elif(command == 'cls' or command == 'clear'):
+            os.system("cls")
+        elif command.lower() == 'history':
+            for i,cmd in enumerate(cmdlist, start = 1):
+                print(f"{i}.{cmd}")
+        elif command == 'pwd':
+            print(os.getcwd())
+        elif command == 'ls':
+            folders = os.listdir()
+            for i in folders:
+                print(i)
+        elif command.startswith("cd"):
+            part = command.split(maxsplit = 1)
+            if len(part)>1:
+                change_directory(part[1])
+            else:
+                home = os.path.expanduser("~")
+                os.chdir(home)
+        elif command.startswith("mkdir "):
+            folder = command[6: ]
+            if os.path.exists(folder):
+                print("Directory already exist. ")
+            else:
+                os.mkdir(folder)
+        elif command.startswith("rmdir "): 
+            folder = command[6: ]
+            try: 
+                os.rmdir(folder)
+                print("Directory removed Successfully.")
+            except FileNotFoundError:
+                print("Directory doesn't exist")
+            except OSError:
+                print("Directory is not empty. ")
+        elif command.startswith("touch "):
+            touch(command)
+        elif command.startswith("rm "):
+            Remove(command)
+        elif command.startswith("cat "):
+            cat(command)
+        elif command.startswith("echo "):
+            echo(command)
+        elif command.startswith("mv "):
+            move(command)
+        elif command.startswith("cp "):
+            copy(command)
+        elif command.lower() == 'help':
+            with open(help_path, "r")as file:
+                data = file.read()
+            print(data)
+        elif command == 'tree':
+            current_directory = os.getcwd()
+            tree(current_directory,"")
         else:
-            home = os.path.expanduser("~")
-            os.chdir(home)
-    elif command.startswith("mkdir "):
-        folder = command[6: ]
-        if os.path.exists(folder):
-            print("Directory already exist. ")
-        else:
-           os.mkdir(folder)
-    elif command.startswith("rmdir "): 
-        folder = command[6: ]
-        try: 
-            os.rmdir(folder)
-            print("Directory removed Successfully.")
-        except FileNotFoundError:
-            print("Directory doesn't exist")
-        except OSError:
-            print("Directory is not empty. ")
-    elif command.startswith("touch "):
-        touch(command)
-    elif command.startswith("rm "):
-        Remove(command)
-    elif command.startswith("cat "):
-        cat(command)
-    elif command.startswith("echo "):
-        echo(command)
-    elif command.startswith("mv "):
-        move(command)
-    elif command.startswith("cp "):
-        copy(command)
-    elif command.lower() == 'help':
-        with open(help_path, "r")as file:
-            data = file.read()
-        print(data)
+            print("Unknown command! ")
+    except Exception as e:
+        print(e)
         
-    else:
-        print("Unknown command! ")
