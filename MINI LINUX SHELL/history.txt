@@ -55,3 +55,88 @@ tree
 tree
 exit
 hello
+tree
+exit
+pwd
+pwd
+cls
+tree
+exit
+pwd
+tree
+cd ..
+tree
+exit
+tree
+cls
+exit
+tree
+exit
+find shell.py
+find PASSWORD MANAGER
+cls
+exit
+find PASSWORD MANAGER
+find PASSWORD MANAGER
+CLS
+EXIT
+exit
+find PASSWORD MANGER
+find PASSWORD MANAGER
+CLS
+cls
+exit
+help
+cls
+echo ram.txt > "Hello i am ram who are you"
+echo "hello i am ram"
+echo "Hello  i am ram who are you" > ram.txt
+mv ram.txt MINI LINUX SHELL
+mv MINI "MINI LINUX SHELL"
+EXIT
+exit
+mv teast.py MINI LINUX SHELL
+mv test.py PASSWORD MANAGER
+EXIT
+exit
+mv PASSWORD PASSWORD MANAGER
+CLS
+cls
+help
+mv PASSWORD test.py
+mv test.py PASSWORD MANAGER
+cls
+ls
+ls
+exit
+ls
+mv test2.py QUIZ GAME
+mv test.py PASSWORD MANAGER
+cd PASSWORD MANAGER
+ls
+mv test.py PYTHON SECURTIY PROGRAMME
+LS
+ls
+touch shyam.txt
+rm shyam.txt
+cat QUIZ NAME
+cat test2.py
+clear
+rmdir a
+copy test.py newtest.py
+cp test.py newtest.py
+find newtest.py
+ls
+cls
+history
+mkdir aws
+cd aws
+echo "Hello you enter to aws azure" >ram.txt
+cls
+cd ..
+rmdir aws
+cd aws
+rm ram.txt
+cd ..
+rmdir aws
+exit

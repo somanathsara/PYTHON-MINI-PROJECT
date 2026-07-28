@@ -59,9 +59,11 @@ def echo(command):
         print("File Already exist.")
 def move(command):
     try: 
-        part = command.split()
+        part = command.split(maxsplit = 2)
         source = part[1]
         destination = part[2]
+        if os.path.isdir(destination):
+            destination = os.path.join(destination,os.path.basename(source))
         os.rename(source, destination)
     except FileNotFoundError:
         print("File not found.")
@@ -88,7 +90,7 @@ def copy(command):
     except OSError:
         print("Invalid path.")
 def tree(path,prefix = ""):
-    data = os.listdir()
+    data = os.listdir(path)
     for index,i in enumerate(data,start = 0):
         full_path =  os.path.join(path,i)
         if len(data) - 1 == index:
@@ -99,9 +101,9 @@ def tree(path,prefix = ""):
             connector = "|_____"
         else:
             connector = "|-----"
-        print(prefix + connector + i)
         if i.startswith("."):
             continue
+        print(prefix + connector + i)
         if os.path.isdir(full_path):
             tree(full_path,new_prefix)
 def change_directory(command):
@@ -115,6 +117,22 @@ def change_directory(command):
             print("No Directory avalaible")
     except NotADirectoryError:
             print("Path is a file, not a directory.")
+def find(target):
+    try:
+        found = False
+        for root, dirs, files in os.walk("G:\\"):
+            for i  in files:
+                if i == target:
+                    print(os.path.join(root, i))
+                    found = True
+            for d in dirs:
+                if d == target:
+                    print(os.path.join(root, d))
+                    found = True
+        if not found:
+            print("File not found")     
+    except PermissionError:
+        print("Access denied to see this files.")
 while True:
     try: 
         command = input(f"{os.getcwd()}\\MiniShell:>")
@@ -176,6 +194,10 @@ while True:
         elif command == 'tree':
             current_directory = os.getcwd()
             tree(current_directory,"")
+        elif command.startswith("find "):
+            path = command[5:]
+            find(path)
+            
         else:
             print("Unknown command! ")
     except Exception as e:
