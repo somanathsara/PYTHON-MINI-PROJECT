@@ -191,6 +191,45 @@ def grep(command):
                 print("No match file found.")
     except FileNotFoundError:
         print("File not found")
+def head(command):
+    try:
+        part = command.split()
+        file = part[1]
+        with open(file, "r")as file:
+            data = file.readlines()
+            if len(data)>10:
+                for i in range(10):
+                    print(data[i], end = "")
+            else:
+                for line in data:
+                    print(line,end = "")
+        print("\n")
+    except FileNotFoundError:
+        print("File not found")
+    except IsADirectoryError:
+        print("It's a directory.")
+    except PermissionError:
+        print("Access denied to this file.")
+def tail(command):
+    try:
+        part = command.split()
+        file = part[1]
+        with open(file, "r")as file:
+            data = file.readlines()
+        if len(data)>10:
+            reverse_data = data[-10:]
+            for line in reverse_data:
+                print(line,end ="")
+        else:
+            for line in data:
+                print(line,end = "")
+        print("\n")
+    except FileNotFoundError:
+        print("File doesn't Exist")
+    except PermissionError:
+        print("Access denied to this file.")
+    except IsADirectoryError:
+        print("It's a directory.")
 while True:
     try: 
         command = input(f"{os.getcwd()}\\MiniShell:>")
@@ -257,6 +296,10 @@ while True:
             find(path)
         elif command.startswith("grep "):
             grep(command)
+        elif command.startswith("head "):
+            head(command)
+        elif command.startswith("tail "):
+            tail(command)
         else:
             print("Unknown command! ")
     except Exception as e:
