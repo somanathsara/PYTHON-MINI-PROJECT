@@ -133,6 +133,64 @@ def find(target):
             print("File not found")     
     except PermissionError:
         print("Access denied to see this files.")
+def insensitive_grep(word, file):
+    with open(file, "r")as file:
+        data = file.readlines()
+    for line in data:
+        if word.lower() in line.lower():
+            print(line,end = "")
+    print("\n")
+def count_grep(word, file):
+    count_num = 0
+    with open(file, "r")as file:
+        data = file.readlines()
+    for line in data:
+        show = line.count(word)
+        count_num += show
+    print(count_num)
+def linenum_grep(word, file):
+    found = False
+    with open(file, "r")as file:
+        data = file.readlines()
+    for index,line in enumerate(data,start = 1):
+        if word in line:
+            found = True
+            print(f"{index} . {line}",end = "")
+    print("\n")
+    if not found:
+        print("No line found contain this word.")  
+def grep(command):
+    part = command.split(maxsplit = 1)
+    cmd = part[0]
+    other = part[1]
+    try:
+        found = False
+        if other.startswith("-"):
+            new_part = other.split(maxsplit=2)
+            option_flag = new_part[0]
+            word = new_part[1]
+            file = new_part[2]
+            if option_flag == "-i":
+                insensitive_grep(word, file)
+            elif option_flag == '-c':
+                count_grep(word, file)
+            elif option_flag == '-n':
+                linenum_grep(word, file)
+        else:
+            new_part = other.split()
+            word =  new_part[0]
+            file = new_part[1]
+            with open(file, "r")as f:
+                data = f.readlines()
+            for line in data:
+                if word in line:
+                    found = True
+                    print(line,end ="")
+            print("\n")
+            if not found:
+                print("No match file found.")
+    except FileNotFoundError:
+        print("File not found")
 while True:
     try: 
         command = input(f"{os.getcwd()}\\MiniShell:>")
@@ -197,9 +255,9 @@ while True:
         elif command.startswith("find "):
             path = command[5:]
             find(path)
-            
+        elif command.startswith("grep "):
+            grep(command)
         else:
             print("Unknown command! ")
     except Exception as e:
         print(e)
-        

@@ -140,3 +140,18 @@ rm ram.txt
 cd ..
 rmdir aws
 exit
+pwd
+grep python test.txt
+grep python est.txt
+grep python test.txt
+grep python test.txt
+grep python test.txt
+grep -c python test.txt
+grep -c python test.txt
+grep -c python test.txt
+grep -n python test.txt
+grep -n pyhton test.txt
+grep -n python test.txt
+grep -c python test.txt
+grep -n python test.txt
+grep -i python test.txt
