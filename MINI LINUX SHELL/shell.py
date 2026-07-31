@@ -1,12 +1,15 @@
-import sys,os,shutil
+import sys, os, shutil
+
 SHELL_DIR = os.path.dirname(os.path.abspath(__file__))
 history_path = os.path.join(SHELL_DIR, "history.txt")
 help_path = os.path.join(SHELL_DIR, "help.txt")
 print("MiniShell V1.O")
 print("Type 'help' for commands: ")
 cmdlist = []
+
+
 def touch(command):
-    folder = command[6: ]
+    folder = command[6:]
     try:
         file = open(folder, "a")
         file.close()
@@ -14,6 +17,8 @@ def touch(command):
         print("File Already exist")
     except PermissionError:
         print("Permission denied")
+
+
 def Remove(command):
     file = command[3:]
     try:
@@ -24,10 +29,12 @@ def Remove(command):
             print("File deleted succesfully. ")
     except PermissionError:
         print("Permission Denied!")
-def  cat(command):
+
+
+def cat(command):
     try:
         file = command[4:]
-        with open(file, "r")as file:
+        with open(file, "r") as file:
             data = file.read()
         print(data)
     except FileNotFoundError:
@@ -38,32 +45,36 @@ def  cat(command):
         print("Access denied to this file")
     except UnicodeDecodeError:
         print("Can not display this file, It is not a text file.")
+
+
 def echo(command):
-    try: 
+    try:
         if ">>" in command:
             left, right = command.split(">>")
-            data = left[5: ]
+            data = left[5:]
             file = right.strip()
-            with open(file, "a")as file:
-                file.write(data +"\n")
+            with open(file, "a") as file:
+                file.write(data + "\n")
         elif ">" in command:
             left, right = command.split(">")
-            data = left[5: ].strip()
+            data = left[5:].strip()
             filename = right.strip()
-            with open(filename, "w")as file:
+            with open(filename, "w") as file:
                 file.write(data)
         else:
-            data = command[5: ]
+            data = command[5:]
             print(f"{data}")
     except FileExistsError:
         print("File Already exist.")
+
+
 def move(command):
-    try: 
-        part = command.split(maxsplit = 2)
+    try:
+        part = command.split(maxsplit=2)
         source = part[1]
         destination = part[2]
         if os.path.isdir(destination):
-            destination = os.path.join(destination,os.path.basename(source))
+            destination = os.path.join(destination, os.path.basename(source))
         os.rename(source, destination)
     except FileNotFoundError:
         print("File not found.")
@@ -73,6 +84,8 @@ def move(command):
         print("File already exist in the directory.")
     except OSError:
         print("Invalid destination path.")
+
+
 def copy(command):
     try:
         part = command.split()
@@ -89,10 +102,12 @@ def copy(command):
         print("Source & destination are the same file.")
     except OSError:
         print("Invalid path.")
-def tree(path,prefix = ""):
+
+
+def tree(path, prefix=""):
     data = os.listdir(path)
-    for index,i in enumerate(data,start = 0):
-        full_path =  os.path.join(path,i)
+    for index, i in enumerate(data, start=0):
+        full_path = os.path.join(path, i)
         if len(data) - 1 == index:
             new_prefix = prefix + "        "
         else:
@@ -105,23 +120,27 @@ def tree(path,prefix = ""):
             continue
         print(prefix + connector + i)
         if os.path.isdir(full_path):
-            tree(full_path,new_prefix)
+            tree(full_path, new_prefix)
+
+
 def change_directory(command):
     try:
-        if command == '~':
+        if command == "~":
             home = os.path.expanduser("~")
             os.chdir(home)
             return
         os.chdir(command)
     except FileNotFoundError:
-            print("No Directory avalaible")
+        print("No Directory avalaible")
     except NotADirectoryError:
-            print("Path is a file, not a directory.")
+        print("Path is a file, not a directory.")
+
+
 def find(target):
     try:
         found = False
         for root, dirs, files in os.walk("G:\\"):
-            for i  in files:
+            for i in files:
                 if i == target:
                     print(os.path.join(root, i))
                     found = True
@@ -130,37 +149,45 @@ def find(target):
                     print(os.path.join(root, d))
                     found = True
         if not found:
-            print("File not found")     
+            print("File not found")
     except PermissionError:
         print("Access denied to see this files.")
+
+
 def insensitive_grep(word, file):
-    with open(file, "r")as file:
+    with open(file, "r") as file:
         data = file.readlines()
     for line in data:
         if word.lower() in line.lower():
-            print(line,end = "")
+            print(line, end="")
     print("\n")
+
+
 def count_grep(word, file):
     count_num = 0
-    with open(file, "r")as file:
+    with open(file, "r") as file:
         data = file.readlines()
     for line in data:
         show = line.count(word)
         count_num += show
     print(count_num)
+
+
 def linenum_grep(word, file):
     found = False
-    with open(file, "r")as file:
+    with open(file, "r") as file:
         data = file.readlines()
-    for index,line in enumerate(data,start = 1):
+    for index, line in enumerate(data, start=1):
         if word in line:
             found = True
-            print(f"{index} . {line}",end = "")
+            print(f"{index} . {line}", end="")
     print("\n")
     if not found:
-        print("No line found contain this word.")  
+        print("No line found contain this word.")
+
+
 def grep(command):
-    part = command.split(maxsplit = 1)
+    part = command.split(maxsplit=1)
     cmd = part[0]
     other = part[1]
     try:
@@ -172,37 +199,39 @@ def grep(command):
             file = new_part[2]
             if option_flag == "-i":
                 insensitive_grep(word, file)
-            elif option_flag == '-c':
+            elif option_flag == "-c":
                 count_grep(word, file)
-            elif option_flag == '-n':
+            elif option_flag == "-n":
                 linenum_grep(word, file)
         else:
             new_part = other.split()
-            word =  new_part[0]
+            word = new_part[0]
             file = new_part[1]
-            with open(file, "r")as f:
+            with open(file, "r") as f:
                 data = f.readlines()
             for line in data:
                 if word in line:
                     found = True
-                    print(line,end ="")
+                    print(line, end="")
             print("\n")
             if not found:
                 print("No match file found.")
     except FileNotFoundError:
         print("File not found")
+
+
 def head(command):
     try:
         part = command.split()
         file = part[1]
-        with open(file, "r")as file:
+        with open(file, "r") as file:
             data = file.readlines()
-            if len(data)>10:
+            if len(data) > 10:
                 for i in range(10):
-                    print(data[i], end = "")
+                    print(data[i], end="")
             else:
                 for line in data:
-                    print(line,end = "")
+                    print(line, end="")
         print("\n")
     except FileNotFoundError:
         print("File not found")
@@ -210,19 +239,21 @@ def head(command):
         print("It's a directory.")
     except PermissionError:
         print("Access denied to this file.")
+
+
 def tail(command):
     try:
         part = command.split()
         file = part[1]
-        with open(file, "r")as file:
+        with open(file, "r") as file:
             data = file.readlines()
-        if len(data)>10:
+        if len(data) > 10:
             reverse_data = data[-10:]
             for line in reverse_data:
-                print(line,end ="")
+                print(line, end="")
         else:
             for line in data:
-                print(line,end = "")
+                print(line, end="")
         print("\n")
     except FileNotFoundError:
         print("File doesn't Exist")
@@ -230,76 +261,137 @@ def tail(command):
         print("Access denied to this file.")
     except IsADirectoryError:
         print("It's a directory.")
+
+
+def wc(command):
+    part = command.split()
+    cmd = part[0]
+    file = part[1]
+    try:
+        with open(file, "r") as f:
+            data = f.readlines()
+        count_line = len(data)
+        count_word = 0
+        count_character = 0
+        for line in data:
+            words = line.split()
+            count_word += len(words)
+            for char in words:
+                count_character += len(char)
+        print(f"{count_line} {count_word} {count_character} {file}")
+    except FileNotFoundError:
+        print("File doesn't exist.")
+    except IsADirectoryError:
+        print("It's a directory.")
+    except PermissionError:
+        print("Access Denied to this file!")
+
+
 while True:
-    try: 
+    try:
         command = input(f"{os.getcwd()}\\MiniShell:>")
         cmdlist.append(command)
-        with open(history_path,"a")as file:
+        with open(history_path, "a") as file:
             file.write(command + "\n")
-        if command == 'exit':
+        if command == "exit":
             print("Exiting from Minishell.")
             sys.exit()
-        elif(command == 'cls' or command == 'clear'):
+        elif command == "cls" or command == "clear":
             os.system("cls")
-        elif command.lower() == 'history':
-            for i,cmd in enumerate(cmdlist, start = 1):
+        elif command.lower() == "history":
+            for i, cmd in enumerate(cmdlist, start=1):
                 print(f"{i}.{cmd}")
-        elif command == 'pwd':
+        elif command == "pwd":
             print(os.getcwd())
-        elif command == 'ls':
+        elif command == "ls":
             folders = os.listdir()
             for i in folders:
                 print(i)
         elif command.startswith("cd"):
-            part = command.split(maxsplit = 1)
-            if len(part)>1:
+            part = command.split(maxsplit=1)
+            if len(part) > 1:
                 change_directory(part[1])
             else:
                 home = os.path.expanduser("~")
                 os.chdir(home)
-        elif command.startswith("mkdir "):
-            folder = command[6: ]
-            if os.path.exists(folder):
-                print("Directory already exist. ")
+        elif command.startswith("mkdir"):
+            if command == 'mkdir':
+                print("Missing folder operand!")
             else:
-                os.mkdir(folder)
-        elif command.startswith("rmdir "): 
-            folder = command[6: ]
-            try: 
-                os.rmdir(folder)
-                print("Directory removed Successfully.")
-            except FileNotFoundError:
-                print("Directory doesn't exist")
-            except OSError:
-                print("Directory is not empty. ")
-        elif command.startswith("touch "):
-            touch(command)
-        elif command.startswith("rm "):
-            Remove(command)
-        elif command.startswith("cat "):
-            cat(command)
-        elif command.startswith("echo "):
-            echo(command)
-        elif command.startswith("mv "):
-            move(command)
-        elif command.startswith("cp "):
-            copy(command)
-        elif command.lower() == 'help':
-            with open(help_path, "r")as file:
+                folder = command[6:]
+                if os.path.exists(folder):
+                    print("Directory already exist. ")
+                else:
+                    os.mkdir(folder)
+        elif command.startswith("rmdir"):
+            if command == 'rmdir':
+                print("Missing folder operand")
+            else:
+                folder = command[6:]
+                try:
+                    os.rmdir(folder)
+                    print("Directory removed Successfully.")
+                except FileNotFoundError:
+                    print("Directory doesn't exist")
+                except OSError:
+                    print("Directory is not empty. ")
+        elif command.startswith("touch"):
+            if command == 'touch':
+                print("Missing file operand!")
+            else:
+                touch(command)
+        elif command.startswith("rm"):
+            if command == 'rm':
+                print("Missing file operand!")
+            else:
+                Remove(command)
+        elif command.startswith("cat"):
+            if command == 'cat':
+                print("Missing file operand!")
+            else:
+                cat(command)
+        elif command.startswith("echo"):
+            if command == 'echo':
+                print("Missing file operand!")
+            else:
+                echo(command)
+        elif command.startswith("mv"):
+            if command == 'mv':
+                print("Missing file operand!")
+            else:
+                move(command)
+        elif command.startswith("cp"):
+            if command == 'cp':
+                print("Missing file operand!")
+            else:
+                copy(command)
+        elif command.lower() == "help":
+            with open(help_path, "r") as file:
                 data = file.read()
             print(data)
-        elif command == 'tree':
+        elif command == "tree":
             current_directory = os.getcwd()
-            tree(current_directory,"")
+            tree(current_directory, "")
         elif command.startswith("find "):
             path = command[5:]
             find(path)
         elif command.startswith("grep "):
             grep(command)
-        elif command.startswith("head "):
-            head(command)
-        elif command.startswith("tail "):
-            tail(command)
+        elif command.startswith("head"):
+            if command == "head":
+                print("Missing file oprand!")
+            else:
+                head(command)
+        elif command.startswith("tail"):
+            if command == "tail":
+                print("Missing file operand!")
+            else:
+                tail(command)
+        elif command.startswith("wc"):
+            if command == "wc":
+                print("Missing file opearand!")
+            else:
+                wc(command)
         else:
             print("Unknown command! ")
     except Exception as e:

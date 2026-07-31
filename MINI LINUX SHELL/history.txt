@@ -155,3 +155,50 @@ grep -n python test.txt
 grep -c python test.txt
 grep -n python test.txt
 grep -i python test.txt
+head
+head test.py
+tail
+cls
+exit
+wc test3.py
+exit
+wc test3.py
+clear
+pwd
+ls
+cd MINI LINUX SHELL
+mkdir newfolder
+mkdir
+cd MINI LINUX SHELL
+mkdir
+rmdir
+rmdir newfolder
+touch ram.py
+rm ram.py
+cd ..
+cat test.txt
+mv test2.py MINI LINUX SHELL
+cd MINI LINUX SHELL
+mv test2.py
+mv test2.py ..
+cp test.txt QUIZ GAME
+cp test.txt ram.txt
+help
+history
+find PANDAS
+grep -c python test.txt
+grep -c "python" test.txt
+grep -c "getpass" test.py
+cd ..
+grep -c "getpass" test.py
+grep -c "python" test.txt
+head os_module_methods.txt
+tail os_module_methods.txt
+cd MINI LINUX SHELL
+wc shell.py
+cd ..
+clear
+exit
+grep -c "python" test.txt
+grep -n python test.txt
+grep -c python test.txt
