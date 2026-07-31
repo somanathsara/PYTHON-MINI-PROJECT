@@ -234,3 +234,43 @@ mv ram.txt shyam.txt QUIZ_GAME
 mv ram.txt shyam.txt QUIZ_GAME
 mv ram.txt shyam.txt QUIZ_GAME
 mv ram.txt QUIZ_GAME 
+cd QUIZ_GAME
+rm ram.txt shyam.txt
+cd ..
+clear
+echo "HEllo i ma from ram.txt" >ram.txt
+echo "HEllo i ma from shyam.txt" > shyam.txt
+mv ram.txt shyam.txt QUIZ_GAME
+EXIR
+exit
+cd QUIZ_GAME
+rm shyam.txt
+cd ..
+echo "HEllo i  am from shyam.txt > shyam.txt
+mv ram.txt shyam.txt QUIZ_GAME
+EXIT
+exit
+grep hello ram.txt shyam.txt
+grep hello ram.txt shyam.txt
+grep hello ram.txt shyam.txt
+echo "HEllo i am from ram.txt" > ram.txt
+echo "HEllo i am from shyam.txt" > shyam.txt
+grep hello ram.txt shyam.txt
+grep HEllo ram.txt shyam.txt
+grep -c HEllo ram.txt shyam.txt
+grep -i HEllo ram.txt shyam.txt
+grep -n HEllo ram.txt shyam.txt
+grep -n HEllo ram.txt shyam.txt
+grep -i hello ram.txt shyam.txt
+grep -n HEllo ram.txt shyam.txt
+grep -i hello ram.txt shyam.txt
+grep -i hello ram.txt shyam.txt 
+exit
+grep -i hello ram.txt shyam.txt
+python -u "g:\My Drive\PYTHON SECURITY PROGRAMME\test3.py"
+grep -i  hello ram.txt shyam.txt
+grep -i hello ram.txt shyam.txt
+grep -i hello ram.txt shyam.txt
+grep -c hello ram.txt shyam.txt
+grep -c HEllo ram.txt shyam.txt
+exit

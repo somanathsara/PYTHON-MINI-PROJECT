@@ -82,7 +82,7 @@ def move(command):
             files = part[1:-1]
             for source in files:
                 new_destination = os.path.join(destination, os.path.basename(source))
-            os.rename(source, new_destination)
+                os.rename(source, new_destination)
     except FileNotFoundError:
         print("File not found.")
     except PermissionError:
@@ -165,49 +165,51 @@ def find(target):
         print("Access denied to see this files.")
 
 
-def insensitive_grep(word, file):
-    with open(file, "r") as file:
-        data = file.readlines()
-    for line in data:
-        if word.lower() in line.lower():
-            print(line, end="")
-    print("\n")
+def insensitive_grep(word, file_names):
+    for file in file_names:
+        with open(file, "r") as file:
+            data = file.readlines()
+        for line in data:
+            if word.lower() in line.lower():
+                print(line, end="")
+        print("\n")
 
 
-def count_grep(word, file):
-    count_num = 0
-    with open(file, "r") as file:
-        data = file.readlines()
-    for line in data:
-        show = line.count(word)
-        count_num += show
-    print(count_num)
+def count_grep(word, file_names):
+    for file in file_names:
+        count_num = 0
+        with open(file, "r") as file:
+            data = file.readlines()
+        for line in data:
+            show = line.count(word)
+            count_num += show
+        print(count_num)
 
 
-def linenum_grep(word, file):
+def linenum_grep(word, file_names):
     found = False
-    with open(file, "r") as file:
-        data = file.readlines()
-    for index, line in enumerate(data, start=1):
-        if word in line:
-            found = True
-            print(f"{index} . {line}", end="")
+    for file in file_names:
+        with open(file, "r") as file:
+            data = file.readlines()
+        for index, line in enumerate(data, start=1):
+            if word in line:
+                found = True
+                print(f"{index} . {line}", end="")
     print("\n")
     if not found:
         print("No line found contain this word.")
 
-
 def grep(command):
-    part = command.split(maxsplit=1)
+    part = command.split()
     cmd = part[0]
-    other = part[1]
+    other = part[1:]
     try:
         found = False
-        if other.startswith("-"):
-            new_part = other.split(maxsplit=2)
+        if other[0] in ['-c', '-n', '-i']:
+            new_part = other
             option_flag = new_part[0]
             word = new_part[1]
-            file = new_part[2]
+            file = new_part[2:]
             if option_flag == "-i":
                 insensitive_grep(word, file)
             elif option_flag == "-c":
@@ -215,16 +217,17 @@ def grep(command):
             elif option_flag == "-n":
                 linenum_grep(word, file)
         else:
-            new_part = other.split()
+            new_part = other
             word = new_part[0]
-            file = new_part[1]
-            with open(file, "r") as f:
-                data = f.readlines()
-            for line in data:
-                if word in line:
-                    found = True
-                    print(line, end="")
-            print("\n")
+            file_names= new_part[1:]
+            for file in file_names:
+                with open(file, "r") as f:
+                    data = f.readlines()
+                for line in data:
+                    if word in line:
+                        found = True
+                        print(line, end="")
+                print("\n")
             if not found:
                 print("No match file found.")
     except FileNotFoundError:
