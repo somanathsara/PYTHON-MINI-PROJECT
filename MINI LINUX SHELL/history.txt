@@ -274,3 +274,17 @@ grep -i hello ram.txt shyam.txt
 grep -c hello ram.txt shyam.txt
 grep -c HEllo ram.txt shyam.txt
 exit
+python-u"g:\MyDrive\PYTHONSECURITYPROGRAMME\MINILINUXSHELL\shell.py"
+rmtest.txtram.txtshyam.txt
+rm test.txt ram.txt shyam.txt
+ls login_system_with_ratelimit.py test.py test2.py Game.py test3.py newtest.py
+echo "HEllo i am from ram.txt" >ram.txt
+echo "hello i am from shyam.txt" >shyam.txt
+cp ram.txt shyam.txt QUIZ_GAME
+cd QUIZ_GAME
+mv QUESTION.TXT ram.txt shyam.txt ..
+rm ram.txt shyam.txt
+cd ..
+cd MINI LINUX SHELL
+mv os_module_methods.txt ..
+exit

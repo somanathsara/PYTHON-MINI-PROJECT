@@ -1,16 +1,16 @@
-# import glob
-# files = glob.glob("*.txt")
-# print(files)
 import os
-def move(command):
-    
-        part = command.split()
-        destination = part[-1]
-        if os.path.isdir(destination):
-            files = part[1:-1]
-            for source in files:
-                new_destination = os.path.join(destination, os.path.basename(source))
-            os.rename(source, new_destination)
-
-    
-move(input("Enter command here: "))
+import glob
+new_part = []
+command = input("input: ")
+part = command.split()
+wildcard = ['*', '?','[']
+for item in part:
+    if '*'in item :
+                match = glob.glob(item)
+                new_part.extend(match)
+    else:
+        new_part.append(item)
+part = new_part
+command = ""
+for i in part:
+    command.

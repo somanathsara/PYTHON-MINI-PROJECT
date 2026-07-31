@@ -1,5 +1,5 @@
 import sys, os, shutil
-
+import glob
 SHELL_DIR = os.path.dirname(os.path.abspath(__file__))
 history_path = os.path.join(SHELL_DIR, "history.txt")
 help_path = os.path.join(SHELL_DIR, "help.txt")
@@ -318,11 +318,19 @@ def sorting(command):
         print("It's a directory")
     except PermissionError:
         print("Access denied to this file!")
-
-    
 while True:
     try:
         command = input(f"{os.getcwd()}\\MiniShell:>")
+        part = command.split()
+        new_part = []
+        for item in part:
+            if "*" in item or "?" in item or "[" in item:
+                match = glob.glob(item)
+                new_part.extend(match)
+            else:
+                new_part.append(item)
+        part = new_part
+        command = " ".join(part)
         cmdlist.append(command)
         with open(history_path, "a") as file:
             file.write(command + "\n")
