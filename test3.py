@@ -1,22 +1,16 @@
+# import glob
+# files = glob.glob("*.txt")
+# print(files)
 import os
-def wc(command):
-    part = command.split()
-    cmd = part[0]
-    file = part[1]
-    try:
-        with open(file, "r")as f:
-            data = f.readlines()
-        count_line = len(data)
-        count_word = 0
-        count_character = 0
-        for line in data:
-            # print(line)
-            words = line.split()
-            count_word += len(words)
-            for char in words:
-                count_character += len(char)
-        print(count_line, count_word, count_character, file)
-    except Exception as e:
-        print(e)
-a = input("Enter command here: ")
-wc(a)
+def move(command):
+    
+        part = command.split()
+        destination = part[-1]
+        if os.path.isdir(destination):
+            files = part[1:-1]
+            for source in files:
+                new_destination = os.path.join(destination, os.path.basename(source))
+            os.rename(source, new_destination)
+
+    
+move(input("Enter command here: "))

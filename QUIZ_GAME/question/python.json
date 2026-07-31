@@ -1,0 +1,52 @@
+[
+    {
+        "question": "What is the most language used by AI",
+        "options": [
+            "JAVA",
+            "C++",
+            "PYTHON",
+            "LUA"
+        ],
+        "answer": "PYTHON"
+    },
+    {
+        "question": "Which keyword define a function ?",
+        "options": [
+            "def",
+            "final",
+            "global",
+            "func"
+        ],
+        "answer": "def"
+    },
+    {
+        "question": "Python is a _______ language ?",
+        "options": [
+            "compiled",
+            "Interpreted",
+            "Assembly",
+            "Machine"
+        ],
+        "answer": "Interpreted"
+    },
+    {
+        "question": "Which data type is mutable ?",
+        "options": [
+            "Tuple()",
+            "List()",
+            "dict()",
+            "set()"
+        ],
+        "answer": "List()"
+    },
+    {
+        "question": "Which operator is used for Exponention ?",
+        "options": [
+            "*",
+            "&&",
+            "||",
+            "**"
+        ],
+        "answer": "**"
+    }
+]

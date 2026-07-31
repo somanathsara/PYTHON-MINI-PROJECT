@@ -20,23 +20,29 @@ def touch(command):
 
 
 def Remove(command):
-    file = command[3:]
+    part = command.split()
+    file_name = part[1:]
     try:
-        if os.path.isdir(file):
-            print("It's a directory not a file.")
-        elif os.path.isfile(file):
-            os.remove(file)
-            print("File deleted succesfully. ")
+        for file in file_name: 
+            if os.path.isdir(file):
+                print("It's a directory not a file.")
+            elif os.path.isfile(file):
+                os.remove(file)
+                print("File deleted succesfully. ")
     except PermissionError:
         print("Permission Denied!")
+    except FileNotFoundError:
+        print("File doesn't exist")
 
 
 def cat(command):
     try:
-        file = command[4:]
-        with open(file, "r") as file:
-            data = file.read()
-        print(data)
+        part = command.split()
+        file_names = part[1:]
+        for file in file_names:
+            with open(file, "r") as file:
+                data = file.read()
+            print(data)
     except FileNotFoundError:
         print("File doesn't exist")
     except IsADirectoryError:
@@ -70,12 +76,13 @@ def echo(command):
 
 def move(command):
     try:
-        part = command.split(maxsplit=2)
-        source = part[1]
-        destination = part[2]
+        part = command.split()
+        destination = part[-1]
         if os.path.isdir(destination):
-            destination = os.path.join(destination, os.path.basename(source))
-        os.rename(source, destination)
+            files = part[1:-1]
+            for source in files:
+                new_destination = os.path.join(destination, os.path.basename(source))
+            os.rename(source, new_destination)
     except FileNotFoundError:
         print("File not found.")
     except PermissionError:
@@ -89,9 +96,13 @@ def move(command):
 def copy(command):
     try:
         part = command.split()
-        source = part[1]
-        destination = part[2]
-        shutil.copy(source, destination)
+        counter = len(part)
+        files = part[1:-1]
+        destination = part[-1]
+        if os.path.isdir(destination):
+            for source in files:
+                dest_path = os.path.join(destination,os.path.basename(source))
+                shutil.copy(source , dest_path)
     except FileNotFoundError:
         print("File not found.")
     except PermissionError:
@@ -287,6 +298,25 @@ def wc(command):
         print("Access Denied to this file!")
 
 
+def sorting(command):
+    part = command.split()
+    cmd = part[0]
+    file_name = part[1]
+    try:
+        with open(file_name, "r") as file:
+            data = file.readlines()
+        sorted_data = sorted(data)
+        for line in sorted_data:
+            print(line, end="")
+        print("\n")
+    except FileNotFoundError:
+        print("File doesn't exist.")
+    except IsADirectoryError:
+        print("It's a directory")
+    except PermissionError:
+        print("Access denied to this file!")
+
+    
 while True:
     try:
         command = input(f"{os.getcwd()}\\MiniShell:>")
@@ -315,7 +345,7 @@ while True:
                 home = os.path.expanduser("~")
                 os.chdir(home)
         elif command.startswith("mkdir"):
-            if command == 'mkdir':
+            if command == "mkdir":
                 print("Missing folder operand!")
             else:
                 folder = command[6:]
@@ -324,7 +354,7 @@ while True:
                 else:
                     os.mkdir(folder)
         elif command.startswith("rmdir"):
-            if command == 'rmdir':
+            if command == "rmdir":
                 print("Missing folder operand")
             else:
                 folder = command[6:]
@@ -336,32 +366,32 @@ while True:
                 except OSError:
                     print("Directory is not empty. ")
         elif command.startswith("touch"):
-            if command == 'touch':
+            if command == "touch":
                 print("Missing file operand!")
             else:
                 touch(command)
         elif command.startswith("rm"):
-            if command == 'rm':
+            if command == "rm":
                 print("Missing file operand!")
             else:
                 Remove(command)
         elif command.startswith("cat"):
-            if command == 'cat':
+            if command == "cat":
                 print("Missing file operand!")
             else:
                 cat(command)
         elif command.startswith("echo"):
-            if command == 'echo':
+            if command == "echo":
                 print("Missing file operand!")
             else:
                 echo(command)
         elif command.startswith("mv"):
-            if command == 'mv':
+            if command == "mv":
                 print("Missing file operand!")
             else:
                 move(command)
         elif command.startswith("cp"):
-            if command == 'cp':
+            if command == "cp":
                 print("Missing file operand!")
             else:
                 copy(command)
@@ -392,6 +422,11 @@ while True:
                 print("Missing file opearand!")
             else:
                 wc(command)
+        elif command.startswith("sort"):
+            if command == "sort":
+                print("Missing file operand!")
+            else:
+                sorting(command)
         else:
             print("Unknown command! ")
     except Exception as e:

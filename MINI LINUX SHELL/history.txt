@@ -202,3 +202,35 @@ exit
 grep -c "python" test.txt
 grep -n python test.txt
 grep -c python test.txt
+sort test.txt
+sort test.txt
+sort
+sort test.txt
+sort test.txt
+sort test.txt
+touch a.txt
+touch b.txt
+rm a.txt b.txt
+rm a.txt
+rm b.txt
+exit
+touch a.txt 
+touch b.txt
+touch c.txt
+rm a.txt b.txt c.txt
+echo "hello i am from ram.txt" > ram.txt
+echo "Hello i am from shyam.txt" >shyam.txt
+cat test.txt ram.txt shyam.txt
+exit
+cp ram.txt shyam.txt test.txt
+cp ram.txt shyam.txt QUIZ GAME
+cp ram.txt shyam.txt "QUIZ GAME"
+cp ram.txt shyam.txt QUIZ_GAME
+exit
+mv ram.txt shyam.txt ..
+mv ram.txt shyam.txt QUIZ_GAME
+mv ram.txt shyam.txt QUIZ_GAME
+mv ram.txt shyam.txt QUIZ_GAME
+mv ram.txt shyam.txt QUIZ_GAME
+mv ram.txt shyam.txt QUIZ_GAME
+mv ram.txt QUIZ_GAME 

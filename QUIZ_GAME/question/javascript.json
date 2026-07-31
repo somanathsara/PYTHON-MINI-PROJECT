@@ -1,0 +1,52 @@
+[
+    {
+        "question": "Which keyword is used to declare a variable in modern js ?",
+        "options": [
+            "var",
+            "let",
+            "const",
+            "string"
+        ],
+        "answer": "let"
+    },
+    {
+        "question": "Which company originally develpoed javascipt ?",
+        "options": [
+            "Amazon",
+            "Netscape",
+            "Google",
+            "Microsoft"
+        ],
+        "answer": "Netscape"
+    },
+    {
+        "question": "Which method is used to display a popup alert ?",
+        "options": [
+            "popup()",
+            "alert()",
+            "show()",
+            "print()"
+        ],
+        "answer": "alert()"
+    },
+    {
+        "question": "Which operator checks both value & datatype ?",
+        "options": [
+            "=",
+            "==",
+            "&&",
+            "==="
+        ],
+        "answer": "==="
+    },
+    {
+        "question": "Which keyword used to define a function ?",
+        "options": [
+            "let()",
+            "main()",
+            "def()",
+            "function()"
+        ],
+        "answer": "function()"
+    }
+]

@@ -1,0 +1,52 @@
+[
+    {
+        "question": "Which lanuage is used to build an OS?",
+        "options": [
+            "C",
+            "JAVA",
+            "PYTHON",
+            "RUST"
+        ],
+        "answer": "C"
+    },
+    {
+        "question": "Which function is the entry point of c programm ?",
+        "options": [
+            "main()",
+            "start()",
+            "init()",
+            "run()"
+        ],
+        "answer": "main()"
+    },
+    {
+        "question": "Which header file is used in printf() ?",
+        "options": [
+            "stdio.h",
+            "stdlib.h",
+            "string.h",
+            "math.h"
+        ],
+        "answer": "stdio.h"
+    },
+    {
+        "question": "Which loop is guarented to run at once ?",
+        "options": [
+            "while()",
+            "for()",
+            "do...while()",
+            "foreach()"
+        ],
+        "answer": ""
+    },
+    {
+        "question": "Which keyword is used to define a constant ?",
+        "options": [
+            "const",
+            "def",
+            "final",
+            "static"
+        ],
+        "answer": "const"
+    }
+]

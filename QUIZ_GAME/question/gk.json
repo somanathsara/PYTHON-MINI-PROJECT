@@ -1,0 +1,52 @@
+[
+    {
+        "question": "Which planet is known as Red planet ?",
+        "options": [
+            "Saturn",
+            "Mars",
+            "Jupyter",
+            "Neptune"
+        ],
+        "answer": "Mars"
+    },
+    {
+        "question": "Which is the larges ocean ?",
+        "options": [
+            "Pacific",
+            "Indian",
+            "Atlantic",
+            "Arcitic"
+        ],
+        "answer": "Pacific"
+    },
+    {
+        "question": "How many continents are there ?",
+        "options": [
+            "2",
+            "7",
+            "9",
+            "13"
+        ],
+        "answer": "7"
+    },
+    {
+        "question": "Which is the largest planet in our solar system ?",
+        "options": [
+            "Jupyter",
+            "Uranus",
+            "Mars",
+            "Venus"
+        ],
+        "answer": "Jupyter"
+    },
+    {
+        "question": "Which is the longest river in the world ?",
+        "options": [
+            "Nile",
+            "Ganga",
+            "Amazon",
+            "Yangtze"
+        ],
+        "answer": "Nile"
+    }
+]
