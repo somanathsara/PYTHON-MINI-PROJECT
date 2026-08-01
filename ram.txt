@@ -1,1 +1,1 @@
-"HEllo i am from ram.txt"
+HEllo i am from ram.txt

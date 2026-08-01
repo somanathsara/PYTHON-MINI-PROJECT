@@ -9,5 +9,3 @@ if "|" in command:#piped commands
             result = utils.cat_pipe(left)
             final_result = utils.grep_pipe(right[1],result)
             print(final_result)
-
-    
