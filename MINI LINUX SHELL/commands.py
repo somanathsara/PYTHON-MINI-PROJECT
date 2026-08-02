@@ -263,8 +263,8 @@ def tail(command):
         with open(file, "r") as file:
             data = file.readlines()
         if len(data) > 10:
-            reverse_data = data[-10:]
-            for line in reverse_data:
+            require_data = data[-10:]
+            for line in require_data:
                 print(line, end="")
         else:
             for line in data:
@@ -319,3 +319,8 @@ def sorting(command):
         print("It's a directory")
     except PermissionError:
         print("Access denied to this file!")
+
+def display_data(data):
+    for line in data:
+        print(line, end ="")
+    print("\n")

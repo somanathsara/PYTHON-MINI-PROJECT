@@ -313,3 +313,18 @@ find ram.txt
 cat QUESTION.TXT os_module_methods.txt ram.txt shyam.txt
 exit
 grep python ram.txt > notes.txt
+cat  ram.txt | grep from | head
+cat  ram.txt | grep from
+python -u "g:\My Drive\PYTHON SECURITY PROGRAMME\MINI LINUX SHELL\shell.py"
+cat  ram.txt | grep from 
+cat  ram.txt | grep from 
+cat  ram.txt | grep from 
+cat  ram.txt | grep from
+cat  ram.txt | grep from | head
+cat  ram.txt | grep from | wc
+cat shyam.txt | head | wc
+cat shyam.txt | head | wc
+cat shyam.txt | head | wc
+cat shyam.txt | head
+cat shyam.txt | head
+cat shyam.txt | head | wc

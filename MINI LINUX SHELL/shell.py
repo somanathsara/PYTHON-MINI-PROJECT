@@ -26,13 +26,25 @@ while True:
                 new_part.append(item)
         part = new_part
         command = " ".join(part)
-        if "|" in command:#piped commands
-            part = command.split("|")
-            left = part[0].strip()
-            right = part[1].strip()
-            result = utils.cat_pipe(left)
-            final_result = utils.grep_pipe(right[1],result)
-            print(final_result)
+        if "|" in command: #piped commands
+            pipeline = command.split("|")
+            pipe_commands  = {
+                    "cat" : utils.cat_pipe,
+                    "grep" : utils.grep_pipe,
+                    "head" : utils.head_pipe,
+                    "tail" : utils.tail_pipe,
+                    "wc" : utils.wc_pipe,
+                    "sort" : utils.sort_pipe,
+                    "uniq" : utils.uniq_pipe,
+                }
+            returned_data = None
+            for data in pipeline:
+                part = data.split() 
+                cmd = part[0]
+                args = part[1:]
+                function = pipe_commands[cmd]
+                returned_data = function(args, returned_data)
+            commands.display_data(returned_data)
         elif command == "exit":
             print("Exiting from Minishell.")
             sys.exit()
