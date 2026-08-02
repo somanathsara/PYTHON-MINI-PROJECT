@@ -216,6 +216,7 @@ def grep(command):
             elif option_flag == "-n":
                 linenum_grep(word, file)
         else:
+            output = []
             new_part = other
             word = new_part[0]
             file_names = new_part[1:]
@@ -225,12 +226,13 @@ def grep(command):
                 for line in data:
                     if word in line:
                         found = True
-                        print(line, end="")
+                        output.append(line)
                 print("\n")
             if not found:
                 print("No match file found.")
     except FileNotFoundError:
         print("File not found")
+    return output
 
 
 def head(command):

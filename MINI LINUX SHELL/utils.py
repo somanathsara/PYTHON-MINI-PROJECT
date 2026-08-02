@@ -1,4 +1,4 @@
-import os,sys
+import os,sys,commands
 SHELL_DIR = os.path.dirname(os.path.abspath(__file__))
 history_path = os.path.join(SHELL_DIR, "history.txt")
 help_path = os.path.join(SHELL_DIR, "help.txt")
@@ -32,3 +32,13 @@ def cat_pipe(command):
     except UnicodeDecodeError:
         print("Can not display this file, It is not a text file.")
     return datas
+def grep_redirection(command):
+    part = command.split(">")
+    left = part[0].strip()
+    right = part[1].strip()
+    data = commands.grep(left)
+    for line in data:
+        with open (right, "a")as file:
+            file.write(line)
+
+    

@@ -1,4 +1,5 @@
-import sys, os, shutil
+import sys, os
+import  shutil
 import glob
 import utils
 import commands
@@ -11,19 +12,20 @@ cmdlist = []
 while True:
     try:
         command = input(f"{os.getcwd()}\\MiniShell:>")
+        cmdlist.append(command) # history
+        with open(history_path, "a") as file:
+            file.write(command + "\n")
         part = command.split()
         new_part = []
         for item in part:# wildcart
             if "*" in item or "?" in item or "[" in item:
+                utils.expand_wildcards(command)
                 match = glob.glob(item)
                 new_part.extend(match)
             else:
                 new_part.append(item)
         part = new_part
         command = " ".join(part)
-        cmdlist.append(command) # history
-        with open(history_path, "a") as file:
-            file.write(command + "\n")
         if "|" in command:#piped commands
             part = command.split("|")
             left = part[0].strip()
@@ -114,7 +116,11 @@ while True:
             path = command[5:]
             commands.find(path)
         elif command.startswith("grep "):
-            commands.grep(command)
+            if ">" in command:
+                utils.grep_redirection(command)
+            datas = commands.grep(command)
+            for data in datas:
+                print(data)
         elif command.startswith("head"):
             if command == "head":
                 print("Missing file oprand!")

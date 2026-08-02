@@ -309,3 +309,7 @@ cd ..
 rmdir ram
 ls
 exit
+find ram.txt
+cat QUESTION.TXT os_module_methods.txt ram.txt shyam.txt
+exit
+grep python ram.txt > notes.txt
