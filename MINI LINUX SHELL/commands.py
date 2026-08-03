@@ -85,6 +85,8 @@ def Remove(command):
             elif os.path.isfile(file):
                 os.remove(file)
                 print("File deleted succesfully. ")
+            else:
+                print("File not found")
     except PermissionError:
         print("Permission Denied!")
     except FileNotFoundError:
@@ -159,6 +161,8 @@ def copy(command):
             for source in files:
                 dest_path = os.path.join(destination, os.path.basename(source))
                 shutil.copy(source, dest_path)
+        else:
+            print("No folder exist")
     except FileNotFoundError:
         print("File not found.")
     except PermissionError:

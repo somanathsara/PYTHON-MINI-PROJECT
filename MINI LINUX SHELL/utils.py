@@ -27,7 +27,7 @@ def cat_pipe(args, data):
         for file in args:
             with open(file, "r")as f:
                 content = f.readlines()
-            datas.append(content)
+            datas.extend(content)
     except FileNotFoundError:
         print("File doesn't exist")
     except IsADirectoryError:
@@ -36,15 +36,15 @@ def cat_pipe(args, data):
         print("Access denied to this file")
     except UnicodeDecodeError:
         print("Can not display this file, It is not a text file.")
-    return content
+    return datas
 def head_pipe(args, data):
-    return data[:10]           
+    req_data = data[:10]
+    return req_data        
 def tail_pipe(args, data):
     req_data = data[-10:]
     return req_data
 def wc_pipe(args, data):
     print(len(data))
-    return data
 def sort_pipe(args, data):
     ...
 def uniq_pipe(args, data):

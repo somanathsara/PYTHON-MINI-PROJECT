@@ -1,0 +1,26 @@
+[{
+"question":"What is the capital of india ?",
+"options":["mumbai","Delhi","Kolkata","Chennai"],
+"answer":"Delhi"
+},
+{
+    "question":"What is the full form of DBMS ?",
+    "options":["Database management system","Database manage system","Database management source","Database manageble system"],
+    "answer":"Database management system"
+},
+{
+    "question":"What is the most language used by AI",
+    "options":["JAVA","C++","PYTHON","LUA"],
+    "answer":"PYTHON"
+},
+{
+    "question":"Which language has maximum speed ?",
+    "options":["C","JAVA","PYTHON","LUA"],
+    "answer":"C"
+},
+{
+    "question":"Which lanuage is used to make a game engine ?",
+    "options":["C++","JAVA","PYTHON","RUST"],
+    "answer":"C++"
+}
+]

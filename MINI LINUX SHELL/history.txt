@@ -389,3 +389,72 @@ exit
 find shyam.txt
 grep -c show shyam.txt
 grep -c show shyam.txt
+find shyam.txt
+find PANDAS
+CLEAR
+cls
+exi
+exit
+copy *.txt QUIZ GAME
+cp *.txt QUIZ GAME
+cd QUIZ_GAME
+cd QUIZ_GAME
+ls
+rm *.txt
+cd ..
+cp *.txt MY_FOLDER
+cp *.txt QUIZ_GAME
+mv *.txt QUESTION.TXT
+cat shyam.txt | head 
+cat shyam.txt | head
+cat shyam.txt | head
+cat shyam.txt | head
+cat shyam.txt | head
+mv test.py "PASSWORD MANAGER"
+cat test.txt | head
+cat test.txt | head
+
+cat test.txt | headd
+cat test.txt | head
+cat test.txt 
+cat test.txt | head
+catt.txt | head
+cat.txt | head
+cat test.txt | head
+cat test.txt | head
+cat test.txt | head
+cat test.txt | head
+cat test.txt | head
+cat test.txt | head
+hello
+cat test.txt | head | wc
+pwd;wc ram.txt
+cat ram.txt;cat shyam.txt;wc shyam.txt
+wc ram.txt;wc shyam.txt;wc test.txt;tree;history;pwd;
+wc ram.txt;wc shyam.txt;wc test.txt;tree;history;pwd;mkdir jai;cd jai;echo "Hello i am alien " > alien.txt
+rm alien.txt;cd ..;rmdir jai
+grep car shyam.txt;cat ram.txt;wc shyam.txt;wc ram.txt
+cd QUIZ_GAME;rm *.txt;cd ..;cp *.txt QUIZ_GAME;
+cd QUIZ_GAME ; rm *.txt ; cd ..; cp *.txt QUIZ_GAME;
+cd QUIZ_GAME ; rm *.txt ; cd ..; cp *.txt QUIZ_GAME;
+cd QUIZ_GAME ; rm *.txt ; cd ..; cp *.txt QUIZ_GAME;
+cd QUIZ_GAME ; rm *.txt ; cd ..; cp *.txt QUIZ_GAME;
+cd QUIZ_GAME;rm *.txt;cd ..
+cd QUIZ_GAME;rm *.txt;cd ..
+rm *.txt;cd ..
+rm *.txt
+cd ..
+cd QUIZ_GAME;cp *.txt QUIZ_GAME; cd ..
+cd QUIZ_GAME ; cp *.txt QUIZ_GAME ; cd ..
+cd QUIZ_GAME ; cp *.txt QUIZ_GAME ; cd ..  
+cp *.txt ; cd QUIZ_GAME; cd ..
+cp *.txt QUIZ_GAME ; cd .. ;
+cd QUIZ_GAME;rm *.txt;cd ..
+rm *.txt;cd ..
+rm *.txt;cd ..
+cd QUIZ_GAME ; cp *.txt QUIZ_GAME ; cd ..  
+cd QUIZ_GAME
+rm *.txt;cd ..
+rm *.txt
+rm *.txt
+cp *.txt QUIZ_GAME;cd QUIZ_GAME;rm *.txt;cd ..
