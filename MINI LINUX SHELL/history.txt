@@ -458,3 +458,11 @@ rm *.txt;cd ..
 rm *.txt
 rm *.txt
 cp *.txt QUIZ_GAME;cd QUIZ_GAME;rm *.txt;cd ..
+cd QUIZ_GAME;rm *.txt;cd ..
+rm *.txt;cd ..
+rm *.txt
+cd QUIZ_GAME
+cp *.txt ..
+rm *.txt
+\cd ..
+cd ..
