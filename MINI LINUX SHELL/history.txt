@@ -328,3 +328,64 @@ cat shyam.txt | head | wc
 cat shyam.txt | head
 cat shyam.txt | head
 cat shyam.txt | head | wc
+tree
+cat ram.txt
+cat ram.txt
+cat ram.txt
+cat ram.txt
+tree
+grep from ram.txt
+wc ram.txt
+cat shyam.txt | head | wc
+cat ram.txt
+cat shyam.txt
+exit
+cat ram.txt
+grep from ram.txt
+grep -i show shyam.txt
+cat ram.txt shyam.txt
+find *.txt
+cat shyam.txt
+cls
+history
+pwd
+mkdir ram
+rmdir ram
+cd MINI LINUX SHELL
+CD ..
+cd ..
+ls
+touch ramshyam.txt
+rm ramshyam.txt
+copy *.txt MINI LINUX SHELL
+find ram.txt
+head shyam.txt
+tail shyam.txt
+wc shyam.txt
+sort shyam.txt
+cat  ram.txt
+cat  ram.txt
+tree
+tree
+tree
+tree
+pwd
+cd ram.txt
+cd PASSWORD MANAGER
+cd ..
+history
+pwd
+find shyam.txt
+history
+pwd 
+find ram.txt
+history
+pwd 
+wc ram.txt
+history
+cls
+clear
+exit
+find shyam.txt
+grep -c show shyam.txt
+grep -c show shyam.txt

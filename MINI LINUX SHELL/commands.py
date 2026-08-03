@@ -1,9 +1,67 @@
-import os
+import os, sys
 import shutil
 
 SHELL_DIR = os.path.dirname(os.path.abspath(__file__))
 history_path = os.path.join(SHELL_DIR, "history.txt")
 help_path = os.path.join(SHELL_DIR, "help.txt")
+
+cmd_list = []
+def clear(command):
+    os.system("cls")
+
+
+def exit(command):
+    print("Exit from Minishell!")
+    sys.exit()
+
+
+def history(command):
+    for i, cmd in enumerate(cmd_list, start=1):
+        print(f"{i}.{cmd}")
+
+
+def pwd(command):
+    print(os.getcwd())
+
+
+def mkdir(command):
+    if command == "mkdir":
+        print("Missing folder operand!")
+    else:
+        folder = command[6:]
+        if os.path.exists(folder):
+            print("Directory already exist. ")
+        else:
+            os.mkdir(folder)
+
+
+def rmdir(command):
+    if command == "rmdir":
+        print("Missing folder operand")
+    else:
+        folder = command[6:]
+        try:
+            os.rmdir(folder)
+            print("Directory removed Successfully.")
+        except FileNotFoundError:
+            print("Directory doesn't exist")
+        except OSError:
+            print("Directory is not empty. ")
+
+
+def cd(command):
+    part = command.split(maxsplit=1)
+    if len(part) > 1:
+        change_directory(part[1])
+    else:
+        home = os.path.expanduser("~")
+        os.chdir(home)
+
+
+def ls(command):
+    folders = os.listdir()
+    for i in folders:
+        print(i)
 
 
 def touch(command):
@@ -113,7 +171,10 @@ def copy(command):
         print("Invalid path.")
 
 
-def tree(path, prefix=""):
+def tree(path = ".", prefix=""):
+    if prefix == "":
+        parts = path.split()
+        path = parts[1] if len(parts)>1 else "."
     data = os.listdir(path)
     for index, i in enumerate(data, start=0):
         full_path = os.path.join(path, i)
@@ -145,8 +206,13 @@ def change_directory(command):
         print("Path is a file, not a directory.")
 
 
-def find(target):
+def find(command):
+    part = command.split()
+    cmd = part[0]
+    target = part[1]
     try:
+        if target is None:
+            print("Missing file operand!")
         found = False
         for root, dirs, files in os.walk("G:\\"):
             for i in files:
@@ -320,7 +386,8 @@ def sorting(command):
     except PermissionError:
         print("Access denied to this file!")
 
+
 def display_data(data):
     for line in data:
-        print(line, end ="")
+        print(line, end="")
     print("\n")
