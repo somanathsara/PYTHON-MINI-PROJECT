@@ -1,4 +1,5 @@
 import os,sys,commands
+from colorama import Fore, init, Back
 SHELL_DIR = os.path.dirname(os.path.abspath(__file__))
 history_path = os.path.join(SHELL_DIR, "history.txt")
 help_path = os.path.join(SHELL_DIR, "help.txt")
@@ -49,5 +50,22 @@ def sort_pipe(args, data):
     ...
 def uniq_pipe(args, data):
     ...
+def color(command):
+    colors = {
+                "red":Fore.RED,
+                "green":Fore.GREEN,
+                "blue":Fore.BLUE,
+                "yellow":Fore.YELLOW,
+                "white":Fore.WHITE,
+                "reset":Fore.RESET,
+                "cyan":Fore.CYAN,
+                "magneta":Fore.MAGENTA
+            }
+    part = command.split()
+    if part[1] in colors:
+        cureent_color = colors[part[1]]
+    else:
+        print("Invalid color!")
+    return cureent_color
     
     

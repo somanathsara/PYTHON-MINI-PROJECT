@@ -1,5 +1,5 @@
-import sys, os
-import  shutil
+import sys, os,shutil
+from colorama import Fore, init,Back
 import glob
 import utils
 import commands
@@ -8,23 +8,15 @@ history_path = os.path.join(SHELL_DIR, "history.txt")
 help_path = os.path.join(SHELL_DIR, "help.txt")
 print("MiniShell V1.O")
 print("Type 'help' for commands: ")
+global current_color
+current_color = Fore.WHITE
 cmdlist = []
 while True:
     try:
-        command = input(f"{os.getcwd()}\\MiniShell:>")
+        command = input(current_color+f"{os.getcwd()}\\MiniShell:>")
         commands.cmd_list.append(command)
         with open(history_path, "a") as file:
-            file.write(command + "\n")
-        part = command.split()
-        new_part = []
-        for item in part:# wildcart
-            if "*" in item or "?" in item or "[" in item:
-                match = glob.glob(item)
-                new_part.extend(match)
-            else:
-                new_part.append(item)
-        part = new_part
-        command = " ".join(part)
+            file.write(command + "\n") 
         command_pallete = {     #parser  content
             "exit":commands.exit,
             "cls" :commands.clear,
@@ -47,9 +39,27 @@ while True:
             "head":commands.head,
             "tail":commands.tail,
             "wc":commands.wc,
-            "sort":commands.sorting
+            "sort":commands.sorting,
+            "set":commands.set,
+            "env":commands.env,
+            "unset":commands.unset
         }
-        if "|" in command: #piped commands
+        if "color" in command:
+            current_color = utils.color(command)
+        elif ";" in command:
+            command_lines = command.split(";")
+            for cmd_text in command_lines:
+                cmd_text = cmd_text.strip()
+                if cmd_text:
+                    cmd_text = commands.excute_command(cmd_text)
+                parts = cmd_text.split()
+                cmd = parts[0].strip()
+                function = command_pallete[cmd]
+                data = function(cmd_text)
+                if data is not None:
+                    for line in data:
+                        print(line)
+        elif "|" in command: #piped commands
             pipeline = command.split("|")
             pipe_commands  = {
                     "cat" : utils.cat_pipe,
@@ -67,19 +77,10 @@ while True:
                 args = part[1:]
                 function = pipe_commands[cmd]
                 returned_data = function(args, returned_data)
-            commands.display_data(returned_data)
-        elif ";" in command:
-            command_lines = command.split(";")
-            for cmd_text in command_lines:
-                parts = cmd_text.split()
-                cmd = parts[0].strip()
-                function = command_pallete[cmd]
-                data = function(cmd_text)
-                if data is not None:
-                    for line in data:
-                        print(line)
-                
+            commands.display_data(returned_data)          
         else:    #normal commad
+            if command:
+                command = commands.excute_command(command)
             part = command.split()
             cmd = part[0]
             args = part[1:]

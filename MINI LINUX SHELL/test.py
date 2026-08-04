@@ -1,5 +1,5 @@
 import os,commands
-import glob,shutil
+import glob,colorama,shutil
 command_pallete = {     #parser  content
             "exit":commands.exit,
             "cls" :commands.clear,
@@ -24,14 +24,18 @@ command_pallete = {     #parser  content
             "wc":commands.wc,
             "sort":commands.sorting
         }
-command = input("input:")
-if ";" in command:
-    command_lines = command.split(";")
-    for cmd_text in command_lines:
-        parts = cmd_text.split()
-        cmd = parts[0].strip()
-        function = command_pallete[cmd]
-        data = function(cmd_text)
-        if data is not None:
-            for line in data:
-                print(line)
+# command = input("input:")
+# part = command.split("=")
+# cmd = part[0].split()
+# key = cmd[1]
+# value = part[1]
+# print(key)
+# print(value)
+# NAME= GUDU
+# PROJECT= MINI LINUX SHELL
+# HOME= G:/My drive/PYTHON SECURITY PROGRAMME
+# PUSHED= Github
+# name = ram
+a = {"name":"arjun", "age":12}
+a.pop("name")
+print(a)

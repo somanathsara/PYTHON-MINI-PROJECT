@@ -1,11 +1,12 @@
 import os, sys
-import shutil
-
+import shutil, glob
 SHELL_DIR = os.path.dirname(os.path.abspath(__file__))
 history_path = os.path.join(SHELL_DIR, "history.txt")
 help_path = os.path.join(SHELL_DIR, "help.txt")
 
 cmd_list = []
+
+
 def clear(command):
     os.system("cls")
 
@@ -59,10 +60,15 @@ def cd(command):
 
 
 def ls(command):
-    folders = os.listdir()
-    for i in folders:
-        print(i)
-
+    part = command.split()
+    if len(part) == 1:
+        folders = os.listdir()
+        for i in folders:
+            print(i)
+    else:
+        files = part[1:]
+        for file in files:
+            print(file)
 
 def touch(command):
     folder = command[6:]
@@ -75,23 +81,30 @@ def touch(command):
         print("Permission denied")
 
 
-def Remove(command):
+def Remove(command):        #protected
     part = command.split()
     file_name = part[1:]
     try:
-        for file in file_name:
-            if os.path.isdir(file):
-                print("It's a directory not a file.")
-            elif os.path.isfile(file):
-                os.remove(file)
-                print("File deleted succesfully. ")
-            else:
-                print("File not found")
+        if len(file_name)>10:
+            choice = input(f"Do you really want to delete {len(file_name)} files ?(y/n)")
+            if choice == 'y':
+                rm(file_name)
+        else:
+            rm(file_name)
     except PermissionError:
         print("Permission Denied!")
     except FileNotFoundError:
         print("File doesn't exist")
-
+def rm(file_name):
+    for file in file_name:
+        if os.path.isdir(file):
+            print("It's a directory not a file.")
+        elif os.path.isfile(file):
+            os.remove(file)
+            print("File deleted succesfully. ")
+        else:
+            print("File not found")
+    
 
 def cat(command):
     try:
@@ -175,10 +188,10 @@ def copy(command):
         print("Invalid path.")
 
 
-def tree(path = ".", prefix=""):
+def tree(path=".", prefix=""):
     if prefix == "":
         parts = path.split()
-        path = parts[1] if len(parts)>1 else "."
+        path = parts[1] if len(parts) > 1 else "."
     data = os.listdir(path)
     for index, i in enumerate(data, start=0):
         full_path = os.path.join(path, i)
@@ -395,3 +408,59 @@ def display_data(data):
     for line in data:
         print(line, end="")
     print("\n")
+
+
+def excute_command(command):
+    part = command.split()
+    new_part = []
+    for item in part:  # wildcart
+        if "*" in item or "?" in item or "[" in item:
+            match = glob.glob(item)
+            new_part.extend(match)
+        else:
+            new_part.append(item)
+    part = new_part
+    command = " ".join(part)
+    return command
+def load_env(command):
+    data = []
+    if os.path.isfile(".env"):
+        with open(".env","r") as f:
+            lines = f.readlines()
+        env = {}
+        for line in lines:
+            line = line.strip()
+            data.append(line)
+            key, value = line.split("=",1 )
+            env[key] = value
+        return env
+    else:
+        print("No .env file exist")
+def env(command):
+    data = load_env(command)
+    for key, value in data.items():
+        print(f"{key}={value}")
+def set(command):
+    part = command.split("=")
+    cmd = part[0].split()
+    key = cmd[1].strip()
+    value = part[1].strip()
+    with open(".env","a")as file:
+        file.write(f"{key}={value}\n")
+def unset(command):
+    part = command.split()
+    cmd = part[0]
+    key = part[1].strip()
+    env_file = load_env(command)
+    # for data in env_file:
+    #     if key == data.strip():
+    if key in env_file:
+        env_file.pop(key)
+    else:
+        print("No key available!")
+    with open(".env", "w")as file:
+        for key, value in env_file.items():
+            file.write(f"{key} = {value}\n")    
+    
+    
+    

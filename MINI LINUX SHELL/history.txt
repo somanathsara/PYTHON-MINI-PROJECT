@@ -466,3 +466,217 @@ cp *.txt ..
 rm *.txt
 \cd ..
 cd ..
+pwd; ls
+ls ; pwd ; history
+cp *.txt QUIZ_GAME;vcd QUIZ_GAME ; rm *.txt ; cd ..
+cd QUIZ_GAME ; rm *.txt 
+cp *.txt QUIZ_GAME;vcd QUIZ_GAME ; rm *.txt ; cd ..
+cp *.txt QUIZ_GAME
+cd QUIZ_GAME;rm *.txt;cd ..;cp *.txt QUIZ_GAME
+cd QUIZ_GAME;rm *.txt;cd ..;cp *.txt QUIZ_GAME;cd QUIZ_GAME
+rm *.txt
+color green
+color green
+color green
+color green
+color green
+hello
+color green
+pwd
+ls
+color red
+pwd
+color blue
+
+
+
+
+
+
+
+color cyan
+color magneta
+cls
+ls *.txt
+touch a.txt;touch b.txt;touch c.txt;touch ab.txt;touch file1.txt ;touch file2.txt touch fileA.txt; touch file3.txt
+rm file2.txt touch fileA.txt
+touch file2.txt;touch fileA.txt
+ls ?.txt
+ls *.txt
+ls ?.txt
+ls [ab].txt
+ls[ab]*
+ls [ab]*
+set name = sonu
+set name = sonu
+set name = gudu
+exit
+set name = gudu
+set name = gudu
+python -u "g:\My Drive\PYTHON SECURITY PROGRAMME\MINI LINUX SHELL\shell.py"
+python -u "g:\My Drive\PYTHON SECURITY PROGRAMME\MINI LINUX SHELL\shell.py"
+set name = gudu
+python -u "g:\My Drive\PYTHON SECURITY PROGRAMME\MINI LINUX SHELL\commands.py"
+python -u "g:\My Drive\PYTHON SECURITY PROGRAMME\MINI LINUX SHELL\commands.py"
+python -u "g:\My Drive\PYTHON SECURITY PROGRAMME\MINI LINUX SHELL\commands.py"
+python -u "g:\My Drive\PYTHON SECURITY PROGRAMME\MINI LINUX SHELL\commands.py"
+python -u "g:\My Drive\PYTHON SECURITY PROGRAMME\MINI LINUX SHELL\commands.py"
+python -u "g:\My Drive\PYTHON SECURITY PROGRAMME\MINI LINUX SHELL\commands.py"
+python -u "g:\My Drive\PYTHON SECURITY PROGRAMME\MINI LINUX SHELL\commands.py"
+python -u "g:\My Drive\PYTHON SECURITY PROGRAMME\MINI LINUX SHELL\commands.py"
+python -u "g:\My Drive\PYTHON SECURITY PROGRAMME\MINI LINUX SHELL\commands.py"
+set name = gudu
+env
+cd MINI LINUX SHELL
+env
+env
+cd MINI LINUX SHELL
+env
+cd MINI LINUX SHELL
+env
+cd MINI LINUX SHELL
+env
+cd MINI LINUX SHELL
+env
+cd MINI LINUX SHELL
+env
+cd MINI LINUX SHELL
+env
+env
+exit
+cd MINI LINUX SHELL
+env
+cd MINI LINUX SHELL
+env
+env
+env
+cd MINI LINUX SHELL
+env
+cd MINI LINUX SHELL
+env
+set name = Ram
+env
+cd MINI LINUX SHELL
+env
+set name = ram
+env
+color magneta
+rm ?.txt
+cd ..
+rm ?.txt
+rm [affff].txt
+rm file[.txt
+rm a*
+rm file?
+rm file?.txt
+color reset
+cls
+color green
+pwd
+tree
+color cyan
+cd ~
+exit
+cd MINI LINUX SHELL
+env
+cd MINI LINUX SHELL
+unset name
+exit
+cd MINI LINUX SHELL
+unset name
+env
+exit
+cd MINI LINUX SHELL
+unset name
+unset NAME
+cd MINI LINUX SHELL
+unset name
+exit
+cd MINI LINUX SHELL
+unset PUSH
+cd MINI LINUX SHELL
+unset PUSH
+unset PUSH
+unset PUSH
+exit
+cd MINI LINUX SHELL
+unset name
+
+
+
+
+
+
+
+
+
+
+
+
+
+fe3uqyfhjfqeyh
+ewrhrtuje
+errjere
+efhefierf
+refneighrj
+wefoehue\
+x
+cd MINI LINUX SHELL
+unset name
+env
+cd MINI LINUX SHELL 
+unset name
+env
+unset name
+env
+exit
+cd MINI LINUX SHELL
+unset name
+exit
+cd MINI LINUX SHELL
+unset name
+exit
+cd MINI LINUX SHELL
+unset name
+python -u "g:\My Drive\PYTHON SECURITY PROGRAMME\MINI LINUX SHELL\test.py"
+cd MINI LINUX SHELL
+unset NAME
+env
+exit
+cd MINI LINUX SHELL
+env
+unset name
+unset name
+cd MINI LINUS SHELL
+cd MINI LINUX SHELL;unset name
+cd MINI LINUX SHELL
+unset name
+cd MINI LINUX SHELL
+unset name
+exit
+cd MINI LINUX SHELL
+unset name
+set AGE = 20;unset PUSH
+set AGE = 20
+unset PUSH
+set AGE 20
+set AGE 20
+env
+set AGE 20
+set AGE = 20;unset PUSH
+set AGE = 20;unset PUSHED
+env
+unset AGE
+cd MINI LINUX SHELL
+set AGE = 20;unset PUSHED
+env
+set AGE = 20;unset PUSHED
+unset PUSHED
+cd MINI LINUX SHELL
+set MODE = ghost
+env
+env
+rmdir env
+rm env
+ls
+rm .env
